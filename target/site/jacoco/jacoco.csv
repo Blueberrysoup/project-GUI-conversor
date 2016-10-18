@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+project-GUI-conversor,otherclasses,Conversor,0,9,0,0,0,3,0,3,0,3
+project-GUI-conversor,gui,MainFrame.new ActionListener() {...},14,0,0,0,3,0,2,0,2,0
+project-GUI-conversor,gui,MainFrame.new ActionListener() {...},14,0,0,0,3,0,2,0,2,0
+project-GUI-conversor,gui,MainFrame,248,0,0,0,51,0,5,0,5,0
+project-GUI-conversor,gui,MainFrame.new Runnable() {...},16,0,0,0,7,0,2,0,2,0

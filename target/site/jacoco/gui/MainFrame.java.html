@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainFrame.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project-GUI-conversor</a> &gt; <a href="index.source.html" class="el_package">gui</a> &gt; <span class="el_source">MainFrame.java</span></div><h1>MainFrame.java</h1><pre class="source lang-java linenums">/***
+* MainFrame - GUI for Conversor application
+* @author: Carina Ekström
+* @version: 1.0
+**/
+
+package gui;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import otherclasses.Conversor;
+
+public class MainFrame {
+
+	private JFrame frmConversor;
+	private JTextField textField;
+	private JTextField textField_1;
+<span class="nc" id="L27">	private JButton btnConvertToDegrees = new JButton();</span>
+<span class="nc" id="L28">	private JButton btnConvertToRadians = new JButton();</span>
+<span class="nc" id="L29">	private NumberFormat df = new DecimalFormat(&quot;#.#########&quot;);</span>
+<span class="nc" id="L30">	private Conversor conversor = new Conversor();</span>
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+<span class="nc" id="L36">		EventQueue.invokeLater(new Runnable() {</span>
+			public void run() {
+				try {
+<span class="nc" id="L39">					MainFrame window = new MainFrame();</span>
+<span class="nc" id="L40">					window.frmConversor.setVisible(true);</span>
+<span class="nc" id="L41">				} catch (Exception e) {</span>
+<span class="nc" id="L42">					e.printStackTrace();</span>
+<span class="nc" id="L43">				}</span>
+<span class="nc" id="L44">			}</span>
+		});
+<span class="nc" id="L46">	}</span>
+
+	/**
+	 * Create the application.
+	 */
+<span class="nc" id="L51">	public MainFrame() {</span>
+<span class="nc" id="L52">		initialize();</span>
+<span class="nc" id="L53">	}</span>
+
+	/**
+	 * Calls Conversor class to convert degrees to radians. Displays result in radian's text field.
+	 * @param degrees Value to convert
+	 */
+	private void onClickToRadiansButton(String degrees){
+<span class="nc" id="L60">		double res = conversor.toRadians(Double.parseDouble(degrees));</span>
+<span class="nc" id="L61">		String resStr = df.format(res);</span>
+<span class="nc" id="L62">		textField_1.setText(resStr.replace(',', '.'));</span>
+<span class="nc" id="L63">	}</span>
+	
+	/**
+	 * Calls Conversor class to convert radians to degrees. Displays result in degrees's text field.
+	 * @param radians Value to convert
+	 */
+	private void onClickToDegreesButton(String radians){
+<span class="nc" id="L70">		double res = conversor.toDegrees(Double.parseDouble(radians));</span>
+<span class="nc" id="L71">		String resStr = df.format(res);</span>
+<span class="nc" id="L72">		textField.setText(resStr.replace(',', '.'));</span>
+<span class="nc" id="L73">	}</span>
+
+	
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+<span class="nc" id="L80">		frmConversor = new JFrame();</span>
+<span class="nc" id="L81">		frmConversor.getContentPane().setBackground(Color.GRAY);</span>
+<span class="nc" id="L82">		frmConversor.getContentPane().setLayout(null);</span>
+		
+<span class="nc" id="L84">		JLabel lblEnterTheValues = new JLabel(&quot;Value in degrees:&quot;);</span>
+<span class="nc" id="L85">		lblEnterTheValues.setForeground(Color.WHITE);</span>
+<span class="nc" id="L86">		lblEnterTheValues.setBounds(131, 91, 230, 15);</span>
+<span class="nc" id="L87">		frmConversor.getContentPane().add(lblEnterTheValues);</span>
+		
+<span class="nc" id="L89">		JLabel lblEnterTheValues_1 = new JLabel(&quot;Value in radians:&quot;);</span>
+<span class="nc" id="L90">		lblEnterTheValues_1.setForeground(Color.WHITE);</span>
+<span class="nc" id="L91">		lblEnterTheValues_1.setBounds(131, 132, 230, 15);</span>
+<span class="nc" id="L92">		frmConversor.getContentPane().add(lblEnterTheValues_1);</span>
+		
+<span class="nc" id="L94">		textField = new JTextField();</span>
+<span class="nc" id="L95">		textField.setBounds(291, 87, 114, 19);</span>
+<span class="nc" id="L96">		frmConversor.getContentPane().add(textField);</span>
+<span class="nc" id="L97">		textField.setColumns(10);</span>
+		
+<span class="nc" id="L99">		textField_1 = new JTextField();</span>
+<span class="nc" id="L100">		textField_1.setBounds(291, 128, 114, 19);</span>
+<span class="nc" id="L101">		frmConversor.getContentPane().add(textField_1);</span>
+<span class="nc" id="L102">		textField_1.setColumns(10);</span>
+		
+<span class="nc" id="L104">		btnConvertToRadians.setText(&quot;Convert to radians&quot;);</span>
+<span class="nc" id="L105">		btnConvertToRadians.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L107">				onClickToRadiansButton(textField.getText());</span>
+<span class="nc" id="L108">			}</span>
+		});
+<span class="nc" id="L110">		btnConvertToRadians.setToolTipText(&quot;Enter value in degrees and press here to convert to radians&quot;);</span>
+<span class="nc" id="L111">		btnConvertToRadians.setBounds(461, 84, 175, 25);</span>
+<span class="nc" id="L112">		frmConversor.getContentPane().add(btnConvertToRadians);</span>
+		
+<span class="nc" id="L114">		btnConvertToDegrees.setText(&quot;Convert to degrees&quot;);</span>
+<span class="nc" id="L115">		btnConvertToDegrees.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L117">				onClickToDegreesButton(textField_1.getText());</span>
+<span class="nc" id="L118">			}</span>
+		});
+<span class="nc" id="L120">		btnConvertToDegrees.setToolTipText(&quot;Enter value in radians and press here to convert to degrees&quot;);</span>
+<span class="nc" id="L121">		btnConvertToDegrees.setBounds(461, 127, 175, 25);</span>
+<span class="nc" id="L122">		frmConversor.getContentPane().add(btnConvertToDegrees);</span>
+<span class="nc" id="L123">		frmConversor.setBackground(Color.WHITE);</span>
+<span class="nc" id="L124">		frmConversor.setTitle(&quot;Convertor&quot;);</span>
+<span class="nc" id="L125">		frmConversor.setBounds(100, 100, 804, 310);</span>
+<span class="nc" id="L126">		frmConversor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L127">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
