@@ -1,3 +1,9 @@
+/***
+* MainFrame - GUI for Conversor application
+* @author: Carina Ekström
+* @version: 1.0
+**/
+
 package gui;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -20,6 +26,8 @@ public class MainFrame {
 	private JTextField textField_1;
 	private JButton btnConvertToDegrees = new JButton();
 	private JButton btnConvertToRadians = new JButton();
+	private NumberFormat df = new DecimalFormat("#.#########");
+	private Conversor conversor = new Conversor();
 
 	/**
 	 * Launch the application.
@@ -45,23 +53,23 @@ public class MainFrame {
 	}
 
 	/**
-	 * 
+	 * Calls Conversor class to convert degrees to radians. Displays result in radian's text field.
+	 * @param degrees Value to convert
 	 */
 	private void onClickToRadiansButton(String degrees){
-		Conversor conversor = new Conversor();
-		NumberFormat df = new DecimalFormat("#.######");
 		double res = conversor.toRadians(Double.parseDouble(degrees));
-		textField_1.setText(df.format(res));
+		String resStr = df.format(res);
+		textField_1.setText(resStr.replace(',', '.'));
 	}
 	
 	/**
-	 * 
+	 * Calls Conversor class to convert radians to degrees. Displays result in degrees's text field.
+	 * @param radians Value to convert
 	 */
 	private void onClickToDegreesButton(String radians){
-		Conversor conversor = new Conversor();
-		NumberFormat df = new DecimalFormat("#.######");
 		double res = conversor.toDegrees(Double.parseDouble(radians));
-		textField.setText(df.format(res));
+		String resStr = df.format(res);
+		textField.setText(resStr.replace(',', '.'));
 	}
 
 	
